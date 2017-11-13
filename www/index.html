@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+        
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+        
+        <!-- This seems to allow iFrame inAppBrowser : https://www.tutorialspoint.com/cordova/cordova_whitelist.htm -->
+        <meta http-equiv = "Content-Security-Policy" content = "default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+        <!-- ============== -->
+
+
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>CordovaTestApp</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>
+        <div class="clearfix">    
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-sm-2"> <button class="btn btn-default btn-lg btn-block"  id = "getJson">GET JSON</button> </div>
+                <div class="col-lg-2 col-md-2 col-sm-2"> <button class="btn btn-default btn-lg btn-block"  id = "postJson">POST JSON</button> </div>
+                <div class="col-lg-2 col-md-2 col-sm-2"> <button class="btn btn-default btn-lg btn-block"  id = "putJson">PUT JSON</button> </div>
+                <div class="col-lg-2 col-md-2 col-sm-2"> <button class="btn btn-default btn-lg btn-block"  id = "patchJson">PATCH JSON</button> </div>
+                <!-- <div class="col-lg-2 col-md-2 col-sm-2"> <button class="btn btn-default btn-lg btn-block"  id = "deleteJson">DELETE JSON</button> </div> -->
+                <div class="col-lg-2 col-md-2 col-sm-2"> <button class="btn btn-default btn-lg btn-block"  id = "runBackgroundTask">Run Background Task</button> </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "setLocalStorage">SET LOCAL STORAGE</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "showLocalStorage">SHOW LOCAL STORAGE</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "removeCompanyFromLocalStorage">REMOVE COMPANY</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "getLocalStorageByKey">GET BY KEY</button> </div>
+            </div>
+           <br>
+           <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id="openBrowser">OPEN IN APP BROWSER</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id="getJSONData">GET JSON DATA</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id="playSound">PLAY SOUND</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id="stopSound">STOP SOUND</button> </div>
+            </div>
+           <br>
+           <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "networkInfo">NETWORK INFO</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id="showDeviceInfo">SHOW DEVICE INFO</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "getPosition">CURRENT POSITION</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "watchPosition">WATCH POSITION</button> </div>
+            </div>
+           <br>
+           <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "dialogAlert">ALERT</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "dialogConfirm">CONFIRM</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "dialogPrompt">PROMPT</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "dialogBeep">BEEP</button> </div>
+            </div>
+           <br>
+           <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "getLanguage">LANGUAGE</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "getLocaleName">LOCALE NAME</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "getDate">DATE</button></div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "getCurrency">CURRENCY</button> </div>
+           </div>
+           <br>
+           <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "vibration">VIBRATION</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> <button class="btn btn-default btn-lg btn-block"  id = "vibrationPattern">PATTERN</button> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> </div>
+                <div class="col-lg-3 col-md-3 col-sm-3"> </div>
+           </div>
+            
+        </div>
+
+        <!--Load JavaScript libraries-->
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="type/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <!-- <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
+        
+    </body>
+</html>
